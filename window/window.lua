@@ -20,6 +20,16 @@ function winresize(how)
       newrect = {0,0,1,0.5}
    elseif how == "down" then
       newrect = {0,0.5,1,0.5}
+
+   elseif how == "left-up" then
+      newrect = {0,0,0.5,0.5}
+   elseif how == "left-down" then
+      newrect = {0,0.5,0.5,0.5}
+   elseif how == "right-up" then
+      newrect = {0.5,0,0.5,0.5}
+   elseif how == "right-down" then
+      newrect = {0.5,0.5,1,0.5}
+
    elseif how == "max" then
       newrect = hs.layout.maximized
    elseif how == "left_third" or how == "hthird-0" then
@@ -129,10 +139,15 @@ end
 -------- Key bindings
 
 -- Halves of the screen
-hs.hotkey.bind({"ctrl","cmd"}, "Left",  hs.fnutils.partial(winresize, "left"))
-hs.hotkey.bind({"ctrl","cmd"}, "Right", hs.fnutils.partial(winresize, "right"))
-hs.hotkey.bind({"ctrl","cmd"}, "Up",    hs.fnutils.partial(winresize, "up"))
-hs.hotkey.bind({"ctrl","cmd"}, "Down",  hs.fnutils.partial(winresize, "down"))
+hs.hotkey.bind({"ctrl","cmd"}, "H",  hs.fnutils.partial(winresize, "left"))
+hs.hotkey.bind({"ctrl","cmd"}, "J",  hs.fnutils.partial(winresize, "down"))
+hs.hotkey.bind({"ctrl","cmd"}, "K",    hs.fnutils.partial(winresize, "up"))
+hs.hotkey.bind({"ctrl","cmd"}, "L", hs.fnutils.partial(winresize, "right"))
+
+hs.hotkey.bind({"ctrl","cmd"}, "U",  hs.fnutils.partial(winresize,      "left-up"))
+hs.hotkey.bind({"ctrl","cmd"}, "I", hs.fnutils.partial(winresize,     "left-down"))
+hs.hotkey.bind({"ctrl","cmd"}, "O",    hs.fnutils.partial(winresize, "right-down"))
+hs.hotkey.bind({"ctrl","cmd"}, "P",  hs.fnutils.partial(winresize,     "right-up"))
 
 -- Center of the screen
 hs.hotkey.bind({"ctrl", "cmd"}, "C", center)
